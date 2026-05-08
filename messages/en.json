@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "buy": "Buy",
+    "rent": "Rent",
+    "payingGuest": "Paying Guest",
+    "commercial": "Commercial",
+    "land": "Land",
+    "business": "Business",
+    "listProperty": "List Property",
+    "signIn": "Sign In",
+    "dashboard": "Dashboard",
+    "messages": "Messages",
+    "saved": "Saved",
+    "profile": "Profile",
+    "signOut": "Sign Out"
+  },
+  "hero": {
+    "title": "Find Your Next\nHome in India",
+    "subtitle": "Buy, sell, rent properties, land & businesses across every corner of India",
+    "searchPlaceholder": "Search by city, locality, or project name...",
+    "stats": {
+      "listings": "Active Listings",
+      "cities": "Cities Covered",
+      "customers": "Happy Customers",
+      "verified": "Verified Properties"
+    }
+  },
+  "sections": {
+    "featured": "Featured Properties",
+    "featuredSub": "Handpicked homes and spaces for you",
+    "viewAll": "View all",
+    "howItWorks": "How Zameen Works",
+    "howItWorksSub": "Three simple steps to find your perfect property",
+    "browseByType": "Browse by Type",
+    "topCities": "Explore Top Cities",
+    "topCitiesSub": "Find properties in India's most popular cities",
+    "whyZameen": "Why Choose Zameen",
+    "whyZameenSub": "India's most trusted real estate marketplace",
+    "testimonials": "What Our Users Say",
+    "cta": "Ready to list your property?",
+    "ctaSub": "Reach millions of buyers and tenants across India. Free to list.",
+    "ctaButton": "List Your Property Free"
+  },
+  "listing": {
+    "forSale": "For Sale",
+    "forRent": "For Rent",
+    "lease": "Lease",
+    "payingGuest": "Paying Guest",
+    "auction": "Auction",
+    "new": "New",
+    "bed": "Bed",
+    "bath": "Bath",
+    "negotiable": "Negotiable",
+    "perMonth": "/month",
+    "showPhone": "Show Phone Number",
+    "chatWithSeller": "Chat with Seller",
+    "saveProperty": "Save Property",
+    "saved": "Saved",
+    "sendInquiry": "Send Inquiry",
+    "propertyDetails": "Property Details",
+    "description": "Description",
+    "amenities": "Amenities",
+    "businessDetails": "Business Details",
+    "similarProperties": "Similar Properties"
+  },
+  "auth": {
+    "welcomeBack": "Welcome to Zameen",
+    "signInDesc": "Sign in to your account",
+    "createAccount": "Create Account",
+    "createDesc": "Join Zameen to buy, sell, or rent properties",
+    "phone": "Mobile Number",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "sendOtp": "Send OTP",
+    "verifyOtp": "Verify OTP",
+    "orContinueWith": "or continue with",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "iAmA": "I am a"
+  },
+  "common": {
+    "owner": "Owner",
+    "agent": "Agent",
+    "builder": "Builder",
+    "filters": "Filters",
+    "clearAll": "Clear All",
+    "apply": "Apply",
+    "noResults": "No properties found",
+    "noResultsSub": "Try adjusting your search or filters."
+  }
+}
