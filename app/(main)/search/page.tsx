@@ -22,7 +22,7 @@ export default async function SearchPage({
   const location = query || city || "India";
   const view = params.view || "list"; // list or grid
 
-  let listings = await getListings({
+  const dbListings = await getListings({
     q: query || undefined,
     city: city || undefined,
     listing_type: params.listing_type,
@@ -33,14 +33,24 @@ export default async function SearchPage({
     sort: params.sort || "newest",
   });
 
-  if (listings.length === 0 && !query && !city) {
-    listings = [...MOCK_LISTINGS];
-    if (params.listing_type) listings = listings.filter((l) => l.listing_type === params.listing_type);
-    if (params.property_type) {
-      const types = params.property_type.split(",");
-      listings = listings.filter((l) => types.includes(l.property_type));
-    }
+  // Merge with mock data so the site always looks populated
+  let mockFiltered = [...MOCK_LISTINGS];
+  if (params.listing_type) mockFiltered = mockFiltered.filter((l) => l.listing_type === params.listing_type);
+  if (params.property_type) {
+    const types = params.property_type.split(",");
+    mockFiltered = mockFiltered.filter((l) => types.includes(l.property_type));
   }
+  if (city) mockFiltered = mockFiltered.filter((l) => l.city.toLowerCase().includes(city.toLowerCase()));
+  if (query) {
+    const q = query.toLowerCase();
+    mockFiltered = mockFiltered.filter((l) =>
+      l.title.toLowerCase().includes(q) || l.city.toLowerCase().includes(q) || l.locality.toLowerCase().includes(q)
+    );
+  }
+
+  // DB listings first, then mock data (excluding duplicates)
+  const dbIds = new Set(dbListings.map((l) => l.id));
+  const listings = [...dbListings, ...mockFiltered.filter((l) => !dbIds.has(l.id))];
 
   return (
     <div className="mx-auto max-w-[1280px] px-4 py-4">

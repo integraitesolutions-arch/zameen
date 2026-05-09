@@ -23,7 +23,10 @@ const PROMISES = [
 
 export default async function HomePage() {
   let featuredListings = await getFeaturedListings();
-  if (featuredListings.length === 0) featuredListings = MOCK_LISTINGS.slice(0, 8);
+  // Always show 8 listings — real DB first, fill with mock data
+  const dbIds = new Set(featuredListings.map((l) => l.id));
+  const mockFill = MOCK_LISTINGS.filter((l) => !dbIds.has(l.id));
+  featuredListings = [...featuredListings, ...mockFill].slice(0, 8);
 
   return (
     <div>

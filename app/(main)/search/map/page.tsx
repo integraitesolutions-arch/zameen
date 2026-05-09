@@ -16,7 +16,7 @@ export default async function MapSearchPageRoute({
   const city = params.city || "";
   const location = query || city || "India";
 
-  let listings = await getListings({
+  const dbListings = await getListings({
     q: query || undefined,
     city: city || undefined,
     listing_type: params.listing_type,
@@ -27,16 +27,15 @@ export default async function MapSearchPageRoute({
     sort: params.sort || "newest",
   });
 
-  if (listings.length === 0) {
-    listings = [...MOCK_LISTINGS];
-    if (params.listing_type) {
-      listings = listings.filter((l) => l.listing_type === params.listing_type);
-    }
-    if (params.property_type) {
-      const types = params.property_type.split(",");
-      listings = listings.filter((l) => types.includes(l.property_type));
-    }
+  let mockFiltered = [...MOCK_LISTINGS];
+  if (params.listing_type) mockFiltered = mockFiltered.filter((l) => l.listing_type === params.listing_type);
+  if (params.property_type) {
+    const types = params.property_type.split(",");
+    mockFiltered = mockFiltered.filter((l) => types.includes(l.property_type));
   }
+
+  const dbIds = new Set(dbListings.map((l) => l.id));
+  const listings = [...dbListings, ...mockFiltered.filter((l) => !dbIds.has(l.id))];
 
   return <MapSearchPage listings={listings} query={query} location={location} />;
 }
