@@ -22,13 +22,13 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
 
   return (
     <div className="card-elevation overflow-hidden rounded-lg bg-white" style={{ border: "1px solid #e8eaed" }}>
-      <div className="flex">
+      <div className="flex flex-col sm:flex-row">
         {/* Image */}
-        <Link href={`/listing/${listing.id}`} className="relative w-[280px] flex-shrink-0 overflow-hidden">
+        <Link href={`/listing/${listing.id}`} className="relative w-full sm:w-[280px] flex-shrink-0 overflow-hidden">
           {coverImage ? (
-            <img src={coverImage} alt={listing.title} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" style={{ minHeight: "200px" }} />
+            <img src={coverImage} alt={listing.title} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" style={{ minHeight: "180px", maxHeight: "220px" }} />
           ) : (
-            <div className="flex h-full min-h-[200px] items-center justify-center" style={{ background: "#f4f3f7" }}>
+            <div className="flex h-full min-h-[180px] items-center justify-center" style={{ background: "#f4f3f7" }}>
               <span className="text-4xl opacity-30">🏠</span>
             </div>
           )}
@@ -86,7 +86,7 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
             </p>
 
             {/* Price + Specs row */}
-            <div className="mt-3 flex items-baseline gap-6">
+            <div className="mt-3 flex flex-wrap items-baseline gap-4 sm:gap-6">
               <div>
                 <span className="font-heading text-xl font-bold" style={{ color: "#202124" }}>
                   {formatPrice(listing.price)}
@@ -131,7 +131,7 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
           </div>
 
           {/* Bottom: Agent + Contact buttons */}
-          <div className="mt-3 flex items-center justify-between border-t pt-3" style={{ borderColor: "#e8eaed" }}>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t pt-3" style={{ borderColor: "#e8eaed" }}>
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#1a73e8" }}>
                 {listing.user?.full_name?.charAt(0) || "?"}
