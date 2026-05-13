@@ -20,7 +20,7 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
   const roleLabel = listing.user?.role === "agent" ? "Agent" : listing.user?.role === "builder" ? "Builder" : "Owner";
 
   return (
-    <div className="card-elevation overflow-hidden rounded-lg bg-white" style={{ border: "1px solid #e8eaed", maxWidth: "100%" }}>
+    <div className="card-elevation overflow-hidden rounded-lg md:rounded-lg bg-white" style={{ border: "1px solid #e8eaed" }}>
       {/* Horizontal on desktop, vertical on mobile */}
       <div className="flex flex-col md:flex-row overflow-hidden">
         {/* Image */}

@@ -53,7 +53,7 @@ export default async function SearchPage({
   const listings = [...dbListings, ...mockFiltered.filter((l) => !dbIds.has(l.id))];
 
   return (
-    <div className="mx-auto max-w-[1280px] overflow-x-hidden px-3 md:px-4 py-3">
+    <div className="mx-auto max-w-[1280px] overflow-x-hidden px-2 md:px-4 py-3">
       {/* Search bar */}
       <div className="mb-3 max-w-2xl">
         <Suspense><SearchBar defaultValue={query} /></Suspense>
@@ -64,12 +64,12 @@ export default async function SearchPage({
         Home &gt; Property in {location}
       </p>
 
-      <div className="flex gap-6">
+      <div className="flex gap-0 md:gap-6">
         {/* Filter sidebar — hidden on mobile, uses Sheet */}
         <Suspense><FilterPanel /></Suspense>
 
         {/* Results */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           {/* Results header */}
           <h1 className="mb-1 font-heading text-lg font-semibold" style={{ color: "#202124" }}>
             {listings.length} results | Property in {location}
@@ -93,7 +93,7 @@ export default async function SearchPage({
 
           {/* Listings - Horizontal (99acres style) */}
           {listings.length > 0 ? (
-            <div className="space-y-4">
+            <div className="space-y-3">
               {listings.map((listing) => (
                 <ListingCardHorizontal key={listing.id} listing={listing} />
               ))}
