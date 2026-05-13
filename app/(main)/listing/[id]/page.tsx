@@ -263,18 +263,17 @@ export default async function ListingDetailPage({
       </div>
 
       {/* Mobile Sticky CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white p-3 lg:hidden" style={{ borderTop: "1px solid #e8eaed", boxShadow: "0 -2px 10px rgba(0,0,0,0.05)" }}>
-        <div className="flex items-center justify-between gap-2">
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t bg-white p-3 lg:hidden">
+        <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="font-heading text-lg font-bold" style={{ color: "#202124" }}>{formatPrice(listing.price)}</p>
-            {listing.listing_type === "rent" && <p className="text-[10px]" style={{ color: "#727785" }}>per month</p>}
+            <p className="text-lg font-bold text-blue-600">{formatPrice(listing.price)}</p>
           </div>
           <div className="flex gap-2">
-            <button className="flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-semibold text-white" style={{ background: "#25d366" }}>
-              <Phone className="h-3.5 w-3.5" /> WhatsApp
-            </button>
-            <button className="flex items-center gap-1.5 rounded-md px-4 py-2 text-xs font-semibold text-white" style={{ background: "#1a73e8" }}>
-              <Phone className="h-3.5 w-3.5" /> Contact
+            <Badge variant="outline" className="cursor-pointer px-3 py-2">
+              <Phone className="h-4 w-4" />
+            </Badge>
+            <button className="rounded-lg bg-blue-600 px-6 py-2 text-sm font-medium text-white">
+              Contact Seller
             </button>
           </div>
         </div>

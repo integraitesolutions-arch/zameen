@@ -31,24 +31,24 @@ export default async function HomePage() {
   return (
     <div>
       {/* ===================== HERO ===================== */}
-      <section className="relative overflow-hidden px-4 pb-16 pt-12 md:pb-20 md:pt-16" style={{ background: "linear-gradient(180deg, #f8f9fa 0%, #e8f0fe 100%)" }}>
+      <section className="relative overflow-hidden px-4 pb-10 pt-8 md:pb-20 md:pt-16" style={{ background: "linear-gradient(180deg, #f8f9fa 0%, #e8f0fe 100%)" }}>
         {/* Decorative pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #1a73e8 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
 
         <div className="relative mx-auto max-w-[1280px]">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="font-heading text-4xl font-semibold leading-tight md:text-5xl" style={{ color: "#202124" }}>
+            <h1 className="font-heading text-2xl font-semibold leading-tight md:text-5xl" style={{ color: "#202124" }}>
               Discover a place you&apos;ll love to live
             </h1>
-            <p className="mt-3 text-base" style={{ color: "#414754" }}>
+            <p className="mt-2 text-sm md:text-base" style={{ color: "#414754" }}>
               India&apos;s most trusted platform for buying, renting, and selling properties
             </p>
           </div>
 
           {/* Segmented Search Bar — BharatAbode style */}
-          <div className="mx-auto mt-8 max-w-3xl">
+          <div className="mx-auto mt-6 max-w-3xl">
             {/* Tabs */}
-            <div className="flex gap-1 rounded-t-xl bg-white px-2 pt-2" style={{ borderTop: "1px solid #e8eaed", borderLeft: "1px solid #e8eaed", borderRight: "1px solid #e8eaed" }}>
+            <div className="flex gap-1 overflow-x-auto rounded-t-xl bg-white px-2 pt-2" style={{ borderTop: "1px solid #e8eaed", borderLeft: "1px solid #e8eaed", borderRight: "1px solid #e8eaed" }}>
               {["Buy", "Rent", "PG", "Commercial", "Land"].map((tab, i) => (
                 <Link
                   key={tab}

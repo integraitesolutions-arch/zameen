@@ -30,10 +30,10 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white" style={{ borderBottom: "1px solid #e8eaed" }}>
-      <div className="mx-auto flex h-14 max-w-[1280px] items-center justify-between px-6">
+      <div className="mx-auto flex h-12 md:h-14 max-w-[1280px] items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-1.5">
-          <span className="font-heading text-xl font-bold" style={{ color: "#1a73e8" }}>Zameen</span>
+          <span className="font-heading text-lg md:text-xl font-bold" style={{ color: "#1a73e8" }}>Zameen</span>
         </Link>
 
         {/* Desktop Nav */}

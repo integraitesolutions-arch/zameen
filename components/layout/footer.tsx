@@ -22,8 +22,8 @@ const COLUMNS = [
 export function Footer() {
   return (
     <footer style={{ borderTop: "1px solid #e8eaed", background: "#ffffff" }}>
-      <div className="mx-auto max-w-[1280px] px-4 py-10 sm:px-6">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto max-w-[1280px] px-6 py-10">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div>
             <h3 className="font-heading text-lg font-bold" style={{ color: "#1a73e8" }}>Zameen</h3>

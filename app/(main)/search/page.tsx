@@ -53,19 +53,19 @@ export default async function SearchPage({
   const listings = [...dbListings, ...mockFiltered.filter((l) => !dbIds.has(l.id))];
 
   return (
-    <div className="mx-auto max-w-[1280px] px-4 py-4">
+    <div className="mx-auto max-w-[1280px] px-4 py-3">
       {/* Search bar */}
-      <div className="mb-4 max-w-2xl">
+      <div className="mb-3 max-w-2xl">
         <Suspense><SearchBar defaultValue={query} /></Suspense>
       </div>
 
-      {/* Breadcrumb */}
-      <p className="mb-2 text-xs" style={{ color: "#727785" }}>
+      {/* Breadcrumb — hidden on mobile */}
+      <p className="mb-2 hidden text-xs md:block" style={{ color: "#727785" }}>
         Home &gt; Property in {location}
       </p>
 
       <div className="flex gap-6">
-        {/* Filter sidebar */}
+        {/* Filter sidebar — hidden on mobile, uses Sheet */}
         <Suspense><FilterPanel /></Suspense>
 
         {/* Results */}
