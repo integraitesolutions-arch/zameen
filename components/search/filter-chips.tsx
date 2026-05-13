@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Sparkles, User, CheckCircle, Building2, Home, Camera, ArrowRight } from "lucide-react";
+import { Sparkles, User, CheckCircle, Building2, Home, Camera, SlidersHorizontal } from "lucide-react";
 
 const CHIPS = [
   { label: "NEW LAUNCH", key: "new_launch", icon: Sparkles, color: "#34a853", bg: "#e6f4ea" },
@@ -26,13 +26,20 @@ export function FilterChips() {
     router.push(`/search?${params.toString()}`);
   };
 
+  const openMobileFilters = () => {
+    const trigger = document.getElementById("mobile-filter-trigger");
+    if (trigger) trigger.click();
+  };
+
   return (
-    <div className="flex items-center gap-2 overflow-x-auto py-2">
-      {/* Filters button */}
+    <div className="flex items-center gap-1.5 overflow-x-auto py-2 no-scrollbar">
+      {/* Filters button — opens mobile sheet on small screens, just decorative on desktop */}
       <button
-        className="flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold text-white"
+        onClick={openMobileFilters}
+        className="flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold text-white flex-shrink-0"
         style={{ background: "#1a73e8" }}
       >
+        <SlidersHorizontal className="h-3 w-3" />
         Filters
       </button>
 
@@ -42,7 +49,7 @@ export function FilterChips() {
           <button
             key={chip.key}
             onClick={() => toggleChip(chip.key, chip.value)}
-            className="flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-all"
+            className="flex items-center gap-1 whitespace-nowrap rounded-full border px-2.5 py-1.5 text-[11px] font-medium transition-all flex-shrink-0"
             style={{
               borderColor: isActive ? chip.color : "#e8eaed",
               background: isActive ? chip.bg : "#ffffff",
@@ -54,10 +61,6 @@ export function FilterChips() {
           </button>
         );
       })}
-
-      <button className="flex items-center gap-1 whitespace-nowrap text-xs font-medium" style={{ color: "#727785" }}>
-        <ArrowRight className="h-3 w-3" />
-      </button>
     </div>
   );
 }

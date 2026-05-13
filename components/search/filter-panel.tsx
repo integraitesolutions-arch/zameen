@@ -266,9 +266,9 @@ export function FilterPanel() {
         </div>
       </aside>
 
-      {/* Mobile */}
+      {/* Mobile — trigger is in FilterChips, this just provides the Sheet */}
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger className="inline-flex h-8 items-center gap-2 rounded-md border px-3 text-sm font-medium hover:bg-gray-50 lg:hidden">
+        <SheetTrigger className="hidden" id="mobile-filter-trigger">
           <SlidersHorizontal className="h-4 w-4" /> Filters
         </SheetTrigger>
         <SheetContent side="left" className="w-80 overflow-y-auto">

@@ -64,32 +64,33 @@ export default async function SearchPage({
         Home &gt; Property in {location}
       </p>
 
-      <div className="flex gap-0 md:gap-6">
-        {/* Filter sidebar — hidden on mobile, uses Sheet */}
+      {/* Results header */}
+      <h1 className="mb-1 font-heading text-base md:text-lg font-semibold" style={{ color: "#202124" }}>
+        {listings.length} results | Property in {location}
+      </h1>
+
+      {/* Insights link */}
+      <div className="mb-2 flex items-center gap-2 rounded-lg p-2" style={{ background: "#e8f0fe" }}>
+        <span className="text-xs md:text-sm" style={{ color: "#414754" }}>
+          Get to know more about <strong>{location}</strong>
+        </span>
+        <span className="text-xs font-semibold cursor-pointer" style={{ color: "#1a73e8" }}>View Insights &gt;</span>
+      </div>
+
+      {/* Filter chips */}
+      <Suspense><FilterChips /></Suspense>
+
+      {/* Sort */}
+      <div className="mb-2">
+        <Suspense><SortBar count={listings.length} location={location} /></Suspense>
+      </div>
+
+      <div className="flex gap-6">
+        {/* Filter sidebar — desktop only */}
         <Suspense><FilterPanel /></Suspense>
 
         {/* Results */}
         <div className="flex-1 min-w-0">
-          {/* Results header */}
-          <h1 className="mb-1 font-heading text-lg font-semibold" style={{ color: "#202124" }}>
-            {listings.length} results | Property in {location}
-          </h1>
-
-          {/* Insights link */}
-          <div className="mb-3 flex items-center gap-2 rounded-lg p-2.5" style={{ background: "#e8f0fe" }}>
-            <span className="text-sm" style={{ color: "#414754" }}>
-              Get to know more about <strong>{location}</strong>
-            </span>
-            <span className="text-xs font-semibold cursor-pointer" style={{ color: "#1a73e8" }}>View Insights &gt;</span>
-          </div>
-
-          {/* Filter chips */}
-          <Suspense><FilterChips /></Suspense>
-
-          {/* Sort */}
-          <div className="mb-3">
-            <Suspense><SortBar count={listings.length} location={location} /></Suspense>
-          </div>
 
           {/* Listings - Horizontal (99acres style) */}
           {listings.length > 0 ? (
