@@ -20,9 +20,9 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
   const roleLabel = listing.user?.role === "agent" ? "Agent" : listing.user?.role === "builder" ? "Builder" : "Owner";
 
   return (
-    <div className="card-elevation overflow-hidden rounded-lg bg-white" style={{ border: "1px solid #e8eaed" }}>
+    <div className="card-elevation overflow-hidden rounded-lg bg-white" style={{ border: "1px solid #e8eaed", maxWidth: "100%" }}>
       {/* Horizontal on desktop, vertical on mobile */}
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row overflow-hidden">
         {/* Image */}
         <Link href={`/listing/${listing.id}`} className="relative w-full md:w-[280px] flex-shrink-0 overflow-hidden">
           {coverImage ? (
@@ -60,13 +60,13 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
         </Link>
 
         {/* Details */}
-        <div className="flex flex-1 flex-col justify-between p-4">
+        <div className="flex flex-1 flex-col justify-between p-3 md:p-4 overflow-hidden">
           <div>
             {/* Badges */}
             <div className="mb-2 flex items-center gap-2 flex-wrap">
               {isVerified && <span className="badge-verified"><CheckCircle className="h-3 w-3" /> VERIFIED</span>}
               <span className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase" style={{ background: "#e8f0fe", color: "#1a73e8" }}>
-                {listing.listing_type === "sale" ? "RESALE" : listing.listing_type === "rent" ? "FOR RENT" : listing.listing_type.toUpperCase()}
+                {listing.listing_type === "sale" ? "RESALE" : listing.listing_type === "rent" ? "FOR RENT" : listing.listing_type === "pg_coliving" ? "PG" : listing.listing_type === "lease" ? "LEASE" : listing.listing_type.toUpperCase()}
               </span>
             </div>
 
@@ -81,56 +81,48 @@ export function ListingCardHorizontal({ listing, onFavorite, isFavorited }: Prop
               <MapPin className="h-3.5 w-3.5" /> {listing.locality}, {listing.city}
             </p>
 
-            {/* Price + Specs — stacks on mobile */}
-            <div className="mt-3 flex flex-wrap items-baseline gap-4 md:gap-6">
-              <div>
-                <span className="font-heading text-xl font-bold" style={{ color: "#202124" }}>
+            {/* Price + Specs */}
+            <div className="mt-2">
+              <div className="flex items-baseline gap-1">
+                <span className="font-heading text-lg md:text-xl font-bold" style={{ color: "#202124" }}>
                   {formatPrice(listing.price)}
                 </span>
-                {listing.listing_type === "rent" && <span className="text-sm" style={{ color: "#727785" }}>/month</span>}
-                {pricePerSqft && (
-                  <p className="text-xs" style={{ color: "#727785" }}>₹{pricePerSqft.toLocaleString("en-IN")}/sqft</p>
-                )}
+                {listing.listing_type === "rent" && <span className="text-xs" style={{ color: "#727785" }}>/month</span>}
               </div>
-              {listing.area_sqft > 0 && (
-                <div>
-                  <span className="text-sm font-semibold" style={{ color: "#202124" }}>{formatArea(listing.area_sqft)}</span>
-                  {listing.carpet_area_sqft && <p className="text-xs" style={{ color: "#727785" }}>({formatArea(listing.carpet_area_sqft)} carpet)</p>}
-                </div>
-              )}
-              {listing.bedrooms && (
-                <div>
-                  <span className="text-sm font-semibold" style={{ color: "#202124" }}>{listing.bedrooms} BHK</span>
-                  {listing.bathrooms && <p className="text-xs" style={{ color: "#727785" }}>({listing.bathrooms} Baths)</p>}
-                </div>
-              )}
+              <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs" style={{ color: "#414754" }}>
+                {pricePerSqft && <span style={{ color: "#727785" }}>₹{pricePerSqft.toLocaleString("en-IN")}/sqft</span>}
+                {listing.area_sqft > 0 && <span className="font-semibold">{formatArea(listing.area_sqft)}</span>}
+                {listing.carpet_area_sqft && <span style={{ color: "#727785" }}>({formatArea(listing.carpet_area_sqft)} carpet)</span>}
+                {listing.bedrooms && <span className="font-semibold">{listing.bedrooms} BHK</span>}
+                {listing.bathrooms && <span style={{ color: "#727785" }}>({listing.bathrooms} Baths)</span>}
+              </div>
             </div>
 
             {/* Amenity chips */}
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              {listing.facing && <span className="amenity-chip">{listing.facing} Facing</span>}
-              {listing.parking && listing.parking !== "none" && <span className="amenity-chip">Parking</span>}
-              {listing.amenities?.slice(0, 3).map((a) => <span key={a} className="amenity-chip">{a}</span>)}
+            <div className="mt-2 flex flex-wrap gap-1">
+              {listing.facing && <span className="amenity-chip text-[10px]">{listing.facing} Facing</span>}
+              {listing.parking && listing.parking !== "none" && <span className="amenity-chip text-[10px]">Parking</span>}
+              {listing.amenities?.slice(0, 3).map((a) => <span key={a} className="amenity-chip text-[10px]">{a}</span>)}
             </div>
           </div>
 
           {/* Bottom: Agent + Contact */}
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t pt-3" style={{ borderColor: "#e8eaed" }}>
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#1a73e8" }}>
+          <div className="mt-3 border-t pt-3" style={{ borderColor: "#e8eaed" }}>
+            <div className="flex items-center gap-2 mb-2">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold text-white flex-shrink-0" style={{ background: "#1a73e8" }}>
                 {listing.user?.full_name?.charAt(0) || "?"}
               </div>
-              <div>
-                <p className="text-xs font-semibold" style={{ color: "#202124" }}>{listing.user?.full_name}</p>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold truncate" style={{ color: "#202124" }}>{listing.user?.full_name}</p>
                 <p className="text-[10px]" style={{ color: "#727785" }}>{roleLabel}</p>
               </div>
             </div>
             <div className="flex gap-2">
-              <button className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold" style={{ background: "#25d366", color: "#ffffff" }}>
-                <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
+              <button className="flex flex-1 items-center justify-center gap-1 rounded-md px-2 py-1.5 text-[11px] font-semibold" style={{ background: "#25d366", color: "#ffffff" }}>
+                <MessageCircle className="h-3 w-3" /> WhatsApp
               </button>
-              <button className="flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-semibold" style={{ borderColor: "#1a73e8", color: "#1a73e8" }}>
-                <Phone className="h-3.5 w-3.5" /> View Number
+              <button className="flex flex-1 items-center justify-center gap-1 rounded-md border px-2 py-1.5 text-[11px] font-semibold" style={{ borderColor: "#1a73e8", color: "#1a73e8" }}>
+                <Phone className="h-3 w-3" /> View Number
               </button>
             </div>
           </div>

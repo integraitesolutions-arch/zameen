@@ -53,7 +53,7 @@ export default async function SearchPage({
   const listings = [...dbListings, ...mockFiltered.filter((l) => !dbIds.has(l.id))];
 
   return (
-    <div className="mx-auto max-w-[1280px] px-4 py-3">
+    <div className="mx-auto max-w-[1280px] overflow-x-hidden px-3 md:px-4 py-3">
       {/* Search bar */}
       <div className="mb-3 max-w-2xl">
         <Suspense><SearchBar defaultValue={query} /></Suspense>
