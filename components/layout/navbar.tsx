@@ -33,7 +33,7 @@ export function Navbar() {
       <div className="mx-auto flex h-12 md:h-14 max-w-[1280px] items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-1.5">
-          <span className="font-heading text-lg md:text-xl font-bold" style={{ color: "#1a73e8" }}>Zameen</span>
+          <span className="font-heading text-lg md:text-xl font-bold" style={{ color: "#1a73e8" }}>ZAMINDHAAR</span>
         </Link>
 
         {/* Desktop Nav */}

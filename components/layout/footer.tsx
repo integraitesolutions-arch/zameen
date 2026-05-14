@@ -26,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div>
-            <h3 className="font-heading text-lg font-bold" style={{ color: "#1a73e8" }}>Zameen</h3>
+            <h3 className="font-heading text-lg font-bold" style={{ color: "#1a73e8" }}>ZAMINDHAAR</h3>
             <p className="mt-2 text-sm leading-relaxed" style={{ color: "#727785" }}>
               Connecting India&apos;s property owners and buyers through trust, transparency, and technology.
             </p>
@@ -68,7 +68,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-6 text-center text-xs" style={{ borderTop: "1px solid #e8eaed", color: "#727785" }}>
-          &copy; {new Date().getFullYear()} Zameen Real Estate. All rights reserved. Registered with RERA.
+          &copy; {new Date().getFullYear()} ZAMINDHAAR Real Estate. All rights reserved. Registered with RERA.
         </div>
       </div>
     </footer>

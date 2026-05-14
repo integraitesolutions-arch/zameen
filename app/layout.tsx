@@ -17,8 +17,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Zameen — India's Premier Real Estate Marketplace",
-    template: "%s — Zameen",
+    default: "ZAMINDHAAR — India's Premier Real Estate Marketplace",
+    template: "%s — ZAMINDHAAR",
   },
   description:
     "Buy, sell, rent properties, land, and businesses across India. Find apartments, houses, villas, commercial spaces, PG accommodations, and more.",

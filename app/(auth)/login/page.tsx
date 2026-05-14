@@ -1,8 +1,8 @@
 import { LoginForm } from "@/components/auth/login-form";
 
 export const metadata = {
-  title: "Login — Zameen",
-  description: "Sign in to your Zameen account",
+  title: "Login — ZAMINDHAAR",
+  description: "Sign in to your ZAMINDHAAR account",
 };
 
 export default function LoginPage() {

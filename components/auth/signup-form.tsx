@@ -121,7 +121,7 @@ export function SignupForm() {
     <Card className="w-full max-w-md">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
-        <CardDescription>Join Zameen to buy, sell, or rent properties</CardDescription>
+        <CardDescription>Join ZAMINDHAAR to buy, sell, or rent properties</CardDescription>
       </CardHeader>
       <CardContent>
         {error && (

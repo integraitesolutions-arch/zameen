@@ -140,7 +140,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1280px] px-6">
           <div className="mb-10 text-center">
             <h2 className="font-heading text-xl font-semibold" style={{ color: "#202124" }}>
-              The Zameen Promise
+              The ZAMINDHAAR Promise
             </h2>
             <p className="mt-2 text-sm" style={{ color: "#727785" }}>
               We&apos;re redefining the Indian home buying experience, one listing at a time
