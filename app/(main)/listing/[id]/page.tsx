@@ -45,7 +45,7 @@ export default async function ListingDetailPage({
   ].filter(Boolean) as { icon: React.ElementType; label: string; value: string | number }[];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-6">
+    <div className="mx-auto max-w-7xl overflow-x-hidden px-3 md:px-4 py-4 md:py-6">
       {/* Gallery */}
       <ListingGallery media={listing.media || []} title={listing.title} />
 
@@ -66,12 +66,12 @@ export default async function ListingDetailPage({
                 <Badge variant="secondary">Negotiable</Badge>
               )}
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">{listing.title}</h1>
-            <p className="mt-1 flex items-center gap-1 text-gray-600">
-              <MapPin className="h-4 w-4" />
-              {listing.address}, {listing.locality}, {listing.city}, {listing.state} — {listing.pincode}
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">{listing.title}</h1>
+            <p className="mt-1 flex items-start gap-1 text-sm md:text-base text-gray-600 break-words">
+              <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5" />
+              <span>{listing.address}, {listing.locality}, {listing.city}, {listing.state} — {listing.pincode}</span>
             </p>
-            <p className="mt-3 text-3xl font-bold text-blue-600">
+            <p className="mt-3 text-2xl md:text-3xl font-bold text-blue-600">
               {formatPrice(listing.price)}
               {listing.listing_type === "rent" || listing.listing_type === "pg_coliving" ? (
                 <span className="text-base font-normal text-gray-500"> /month</span>
@@ -93,9 +93,9 @@ export default async function ListingDetailPage({
           {details.length > 0 && (
             <>
               <h2 className="mb-4 text-lg font-semibold text-gray-900">Property Details</h2>
-              <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+              <div className="mb-6 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3 lg:grid-cols-4">
                 {details.map((detail) => (
-                  <div key={detail.label} className="flex items-center gap-3 rounded-lg border p-3">
+                  <div key={detail.label} className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                     <detail.icon className="h-5 w-5 text-blue-500" />
                     <div>
                       <p className="text-xs text-gray-500">{detail.label}</p>
@@ -114,7 +114,7 @@ export default async function ListingDetailPage({
               <h2 className="mb-4 text-lg font-semibold text-gray-900">PG Details</h2>
               <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-3">
                 {listing.pg_gender && (
-                  <div className="flex items-center gap-3 rounded-lg border p-3">
+                  <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                     <Users className="h-5 w-5 text-blue-500" />
                     <div>
                       <p className="text-xs text-gray-500">Available For</p>
@@ -123,7 +123,7 @@ export default async function ListingDetailPage({
                   </div>
                 )}
                 {listing.pg_occupancy && (
-                  <div className="flex items-center gap-3 rounded-lg border p-3">
+                  <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                     <BedDouble className="h-5 w-5 text-blue-500" />
                     <div>
                       <p className="text-xs text-gray-500">Occupancy</p>
@@ -132,7 +132,7 @@ export default async function ListingDetailPage({
                   </div>
                 )}
                 {listing.pg_meals_included != null && (
-                  <div className="flex items-center gap-3 rounded-lg border p-3">
+                  <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                     <Package className="h-5 w-5 text-blue-500" />
                     <div>
                       <p className="text-xs text-gray-500">Meals</p>
@@ -176,7 +176,7 @@ export default async function ListingDetailPage({
               <div className="mb-6 space-y-3">
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                   {listing.business_details.business_type && (
-                    <div className="flex items-center gap-3 rounded-lg border p-3">
+                    <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                       <Building2 className="h-5 w-5 text-blue-500" />
                       <div>
                         <p className="text-xs text-gray-500">Business Type</p>
@@ -185,7 +185,7 @@ export default async function ListingDetailPage({
                     </div>
                   )}
                   {listing.business_details.annual_revenue && (
-                    <div className="flex items-center gap-3 rounded-lg border p-3">
+                    <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                       <IndianRupee className="h-5 w-5 text-blue-500" />
                       <div>
                         <p className="text-xs text-gray-500">Annual Revenue</p>
@@ -194,7 +194,7 @@ export default async function ListingDetailPage({
                     </div>
                   )}
                   {listing.business_details.employee_count && (
-                    <div className="flex items-center gap-3 rounded-lg border p-3">
+                    <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                       <Users className="h-5 w-5 text-blue-500" />
                       <div>
                         <p className="text-xs text-gray-500">Employees</p>
@@ -203,7 +203,7 @@ export default async function ListingDetailPage({
                     </div>
                   )}
                   {listing.business_details.years_in_operation && (
-                    <div className="flex items-center gap-3 rounded-lg border p-3">
+                    <div className="flex items-center gap-2 rounded-lg border p-2 md:p-3 overflow-hidden">
                       <Clock className="h-5 w-5 text-blue-500" />
                       <div>
                         <p className="text-xs text-gray-500">Years Operating</p>
